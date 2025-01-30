@@ -2,7 +2,6 @@ from typing import TYPE_CHECKING
 
 from saleor.plugins.base_plugin import BasePlugin, ConfigurationTypeField
 from saleor.payment.interface import GatewayResponse, PaymentData
-from saleor.payment.gateway import payment_success
 
 GATEWAY_NAME = "Manual Payment"
 
