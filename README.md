@@ -179,3 +179,7 @@ Disclaimer: Everything you see here is open and free to use as long as you compl
 #### Crafted with ❤️ by [Saleor Commerce](https://saleor.io)
 
 hello@saleor.io
+
+
+### Local build to mapped saleor-platform config
+docker build -t saleor-platform-api-2 .

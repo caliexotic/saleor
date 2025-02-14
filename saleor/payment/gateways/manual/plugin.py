@@ -1,7 +1,8 @@
 from typing import TYPE_CHECKING
 
+from saleor.payment import TransactionKind
+from saleor.payment.interface import GatewayResponse, PaymentData, PaymentMethodInfo
 from saleor.plugins.base_plugin import BasePlugin, ConfigurationTypeField
-from saleor.payment.interface import GatewayResponse, PaymentData
 
 GATEWAY_NAME = "Manual Payment"
 
@@ -41,11 +42,12 @@ class ManualPaymentGatewayPlugin(BasePlugin):
         return GatewayResponse(
             is_success=True,
             action_required=False,
-            kind="AUTH",
+            kind=TransactionKind.AUTH,
             amount=payment_information.amount,
             currency=payment_information.currency,
             transaction_id="manual_auth",
             error=None,
+            payment_method_info=PaymentMethodInfo(),
         )
 
     def capture_payment(
@@ -57,7 +59,7 @@ class ManualPaymentGatewayPlugin(BasePlugin):
         return GatewayResponse(
             is_success=True,
             action_required=False,
-            kind="CAPTURE",
+            kind=TransactionKind.CAPTURE,
             amount=payment_information.amount,
             currency=payment_information.currency,
             transaction_id="manual_capture",
